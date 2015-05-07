@@ -8,14 +8,17 @@
     <script src="{% static "scripts/jquery-ui.min.js"%}" type="text/javascript"></script>
     <script src="{% static "scripts/jquery.cookie.js"%}" type="text/javascript"></script>
     <script src="{% static "scripts/bootstrap.min.js"%}" type="text/javascript"></script>
+    <script src="{% static "scripts/bootswap.js"%}" type="text/javascript"></script>
     <script src="{% static "scripts/jquery.dataTables.min.js"%}" type="text/javascript"></script>
     <script src="{% static "scripts/paging.js"%}" type="text/javascript"></script>
     <script src="{% static "scripts/base.js"%}" type="text/javascript"></script>
-    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
     <link href="{% static "css/jquery-ui.css"%}" media="screen" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{% static "css/datatables.css" %}" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
+    <link rel="stylesheet" href="{% static "css/bootswatch.min.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <link rel="stylesheet" href="{% static "css/datatables.css" %}" />
     {% endblock %}
     {% block head %}{% endblock %}
 	{% block functions %}{% endblock %}
@@ -26,18 +29,41 @@
 <!-- UserVoice JavaScript SDK (only needed once on a page) -->
 <script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/py7m8MbdHZIXptw3qAaw.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 
-    <div class="container" id="main">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="{% url 'index' %}">NeuroVault (beta)</a>
-                <ul class="nav">
-                    <li><a href="{% url 'new_collection' %}">Add new collection</a></li>
-					<li><a href="{% url 'collections_list' %}">See all collections</a></li>
-					<li><a href="{% url 'FAQ' %}">FAQ</a></li>
-					<li><a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#cc6d00" data-uv-link-color="#007dbf" data-uv-default-mode="feedback" data-uv-forum-id="210717">Give feedback</a>
-					</li>
-				</ul>
-				<ul class="nav pull-right">
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container" id="main">
+        <div class="navbar-header">
+           <a href="{% url 'index' %}" class="navbar-brand">Brainmeta</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+          </button>
+          </div>
+           <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="collections">Collections <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="collections">
+                <li><a href="{% url 'collections_list' %}">All Collections</a></li>
+                <li><a href="{% url 'new_collection' %}">Add new collection</a></li>
+              </ul>
+            </li>
+            <li>
+            <li><a href="{% url 'FAQ' %}" target="_blank">FAQ</a></li>
+            </li>
+            <li>
+	    <li><a href="javascript:void(0)" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#cc6d00" data-uv-link-color="#007dbf" data-uv-default-mode="feedback" data-uv-forum-id="210717">Give feedback</a></li>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Download <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="#">bootstrap.min.css</a></li>
+                <li><a href="#">_bootswatch.scss</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
 					{% if request.user.is_authenticated %}
 					  <li class="dropdown">
 					    <a href="{% url 'my_profile' %}" class="dropdown-toggle" data-toggle="dropdown">
@@ -53,30 +79,41 @@
 	                {% else %}
                         <li><a href="{% url 'login' %}">Log in</a></li>
                     {% endif %}
-				</ul>
-            </div>
+          </ul>
         </div>
-        <div class="row" id="content">
+      </div>
+    </div>
+    <div class="container">
+        <div class="row row-centerewd" id="content">
             <div class="span12">
                 {% block content %}{% endblock %}
             </div>
         </div>
     </div>
-    <script type="text/javascript">
+    </div>
 
-      var _gaq = _gaq || [];
-      var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-      _gaq.push(['_setAccount', 'UA-339450-10']);
-      _gaq.push(['_trackPageview']);
+  <script type="text/javascript">
+/* <![CDATA[ */
+(function(){try{var s,a,i,j,r,c,l=document.getElementsByTagName("a"),t=document.createElement("textarea");for(i=0;l.length-i;i++){try{a=l[i].getAttribute("href");if(a&&a.indexOf("/cdn-cgi/l/email-protection") > -1  && (a.length > 28)){s='';j=27+ 1 + a.indexOf("/cdn-cgi/l/email-protection");if (a.length > j) {r=parseInt(a.substr(j,2),16);for(j+=2;a.length>j&&a.substr(j,1)!='X';j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}j+=1;s+=a.substr(j,a.length-j);}t.innerHTML=s.replace(/</g,"&lt;").replace(/>/g,"&gt;");l[i].setAttribute("href","mailto:"+t.value);}}catch(e){}}}catch(e){}})();
+/* ]]> */
+</script>
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
+<footer>
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>
+							<span>&copy; BrainMeta 2015 All right reserved. By </span><a href="http://poldrack.stanford.edu" target="_blank">PoldrackLab</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<a href="#" class="scrollup" style="display: block;"><i class="fa fa-angle-up active"></i></a>
 </body>
 {% endblock %}
 </html>

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load coffeescript %}
+{% block head %}
+<script type="text/javascript"> 
+var addthis_config = {
+     data_track_clickback: false 
+} 
+</script>
+{% endblock %}
+{% block content %}
+<div class="row row-centered">
+    <div class="span11">
+        <div class= "massive"><p>BrainMeta</p>
+            <div class="lead">How should we compare brain images?</div>
+            <hr>
+        </div>
+</div>
+<div class="row row-centered">
+    <div class="col-4 col-centered third slice">
+<div class="light-head center-text">What is it?</div>
+     <p>BrainMeta is a database of image comparison metrics and standards.</p>
+    </div>
+    <div class="col-4 col-centered third slice">
+<div class="light-head center-text">Why use it?</div>
+         <p>You can see how well your metric identifies images with the same contrast.</p>
+    </div>
+    <div class="col-4 col-centered third slice">
+<div class="light-head center-text"></div>
+         <p>Poldracklab, Stanford University</p>
+    </div>
+</div>
+<hr>
+<div class="row row-centered">
+    <div class="span11">
+
+    		<div class="addthis_toolbox addthis_default_style" style="width: 400px; margin: 0 auto;">
+		    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+		    <a class="addthis_button_tweet"></a>
+		    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+		    <a class="addthis_counter addthis_pill_style"></a>
+		</div>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51b9d30552a8a690"></script>
+    </div>
+</div>
+
+{% endblock %}
